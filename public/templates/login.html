@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="col-24-24">
+		<h2>Login</h2>
+	</div>
+
+	<form data-login-directive>
+		<div class="row">
+			<div class="col-24-24 col-md-6-24">
+				<label>Username</label>
+				<span class="error" data-ng-if="errors.username">{{ errors.username }}</span>
+				<input type="text" name="username" data-ng-model="user.username">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-24-24 col-md-6-24">
+				<label>Password</label>
+				<span class="error" data-ng-if="errors.password">{{ errors.password }}</span>
+				<input type="password" name="password" data-ng-model="user.password">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-24-24 col-md-6-24">
+				<span class="error" data-ng-if="errors.general">{{ errors.general }}</span>
+				<button data-ng-click="login()">Submit</button>
+			</div>
+		</div>
+	</form>
+</div>

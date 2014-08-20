@@ -1,0 +1,45 @@
+<!doctype html>
+<html data-ng-app="app">
+	<head>
+		<title>Movie Roulette</title>
+		<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'> -->
+		<link rel="stylesheet" href="css/pure.css">
+		<link rel="stylesheet" href="css/grids.css">
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/app.css">
+
+		<script src="bower_components/ckeditor/ckeditor.js"></script>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/lodash/dist/lodash.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	</head>
+
+	<body data-ng-controller="MainController" data-body>
+		<div id="header" data-header>
+			<div class="inner">
+				<div id="logo"><img src="img/logo.png"></div>
+
+				<div class="nav">
+					<ul>
+						<li>Home</li>
+						<li>Blog</li>
+						<li>Hire</li>
+						<li>Contact</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div id="wrapper">
+			<div data-ui-view="">
+			</div>
+		</div>
+
+		<script src="js/app.js"></script>
+		<script src="js/directives/directives.js"></script>	
+		<script src="js/services.js"></script>
+		<script src="js/controllers.js"></script>
+	</body>
+</html>

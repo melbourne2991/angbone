@@ -1,0 +1,301 @@
+#wrapper {
+	padding-top: 50px;
+	background: #F1F1F1;
+}
+
+[data-ui-view] {
+
+}
+
+#header {
+	position: fixed;
+	width: 100%;
+	top:0;
+	background: #ffeb00;
+	height: 50px;
+	color: #fff;
+
+	.inner {
+		height: 50px;	
+		position: relative;
+	}
+	.nav {
+		padding: 10px 0 10px 10px;
+		position: absolute;
+		bottom: 10px;
+		right: 20px;
+	  	letter-spacing: 0.1em;
+
+		// background: 
+		ul {
+			@include horizontal-menu();
+			text-transform: uppercase;
+			font-size: 0.8em;
+			li {
+				margin-right: 10px;
+				color: #000;
+				text-decoration: none;
+
+				a {
+					color: #fff;
+					text-decoration: none;
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}		
+	}
+}
+
+#logo {
+	img {
+		width: 100%;
+	}
+	transition: all 0.3s;
+	border-radius: 5px;
+	width: 100px;
+	left: 20px;
+	bottom: 10px;
+	position: absolute;
+	width: 150px;
+}
+
+#body {
+	height: 100%;
+}
+
+#hero {
+	height: 300px;
+	background: url('../img/use_your_illusion.png');
+}
+
+.post {
+	cursor: pointer;
+	margin-bottom: 20px;
+	border-radius: 5px;
+
+	.content {
+		margin-bottom: 10px;
+		border-radius: 5px 5px 5px 5px;
+		background: #fff;
+		padding: 10px;
+	}
+
+	.header {
+		padding: 10px 0;
+		color: #000;
+	}
+
+	h3 {
+		margin: 0;
+	}
+
+	.meta {
+		padding: 10px;
+		color: lighten(#000, 80%);
+		font-size: 12px;
+		background: #505050;
+		border-radius: 5px;
+
+		@include clearfix();
+
+		.date {
+			padding-top: 3px;
+			width: 60%;
+			float: left;
+			display: block;
+			padding-right: 5px;
+			.icon-date {
+				margin-right: 5px;
+				float: left;
+			}
+		}
+
+		.comments {
+			padding-top: 3px;
+			width: 40%;
+			float: left;
+			display: block;
+			padding-left: 5px;
+			.icon-comments {
+				display: inline-block;
+				margin-right: 5px;
+				float: left;
+			}
+		}
+	}
+}
+
+.icon-date {
+	width: 25px
+}
+
+.icon-comments {
+	width: 20px;
+}
+
+.container {
+	@include clearfix();
+	padding: 20px 10px;
+}
+
+// Admin
+$sidebar_width: 300px;
+
+#admin {
+	position: relative;
+	height: 100%;
+	padding-left: $sidebar_width;
+}
+
+#admin .nav {
+	background: $base_gray;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: $sidebar_width;
+	height: 100%;
+	cursor: pointer;
+
+	ul {
+		@include list-reset();
+
+		li {
+			color: $text_gray;
+			font-size: 1.2em;
+			display: block;
+			border-bottom: $border;
+			padding: 20px;
+
+			&:hover {
+				background: $border_gray;
+			}
+		}
+	}
+}
+
+#admin_posts {
+	h1 {
+		margin: 0;
+	}
+}
+
+.pseudo-hr {
+	margin: 10px;
+	border-top: 2px solid $border_gray;
+	margin: 20px 0; 
+}
+
+.button {
+	padding: 10px 20px;
+	background: $base_color;
+	border-bottom: 4px darken($base_color, 10%) solid;
+	color: #fff;
+	font-weight: bolder;
+	border-radius: 5px;
+	display: inline-block;
+	cursor: pointer;
+
+
+	&:hover {
+		background: darken($base_color, 2%);
+		border-bottom: 4px darken($base_color, 5%) solid;
+	}
+}
+
+.button.green {
+	@include color-button(#02AC38);
+}
+
+.button.orange {
+	@include color-button(#E6B800);
+}
+
+.button.gray {
+	@include color-button(#505050);
+}
+
+.button-set {
+	margin-bottom: 20px;
+}
+
+.button-set .button {
+	// margin-right: 10px;
+}
+
+.button.load {
+	background: none;
+	border: 1px dashed #000;
+	color: #000;
+}
+
+[data-load-more-results] {
+	text-align: center;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#cke_wysiwyg {
+	margin-bottom: 20px;
+}
+
+/*** Double Bounce ***/
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+
+  position: relative;
+  margin: 100px auto;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}

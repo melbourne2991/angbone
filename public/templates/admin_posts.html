@@ -1,0 +1,42 @@
+<div id="admin_posts" class="container">
+	<div class="row">
+		<div class="col-24-24">
+			<div class="button-set">
+				<div class="button orange">View Posts</div>
+				<div class="button orange" data-ng-click="newPost()">New Post</div>
+			</div>
+		</div>
+	</div>
+
+	<div data-ng-switch="show">
+		<div class="row" data-ng-switch-when="false">
+			<div class="col-24-24">
+			</div>
+		</div>
+
+		<div data-ng-switch-when="wysiwyg">
+			<div class="row">
+				<div class="col-24-24">
+					<input type="text" data-ng-model="post.title" placeholder="Post Title Goes Here">
+
+					<textarea id="wysiwyg" data-ng-model="post.content" data-ck-editor></textarea>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12-24">
+					<select data-ng-model="post._category" data-ng-options="category._id as category.title for category in categories">
+						<option value="">Please select a category...</option>
+					</select>
+				</div>
+
+				<div class="col-12-24">
+					<div class="button-set align-right">
+						<div class="button gray" data-ng-click="post.save(true)">Save as Draft</div>
+						<div class="button green" data-ng-click="post.save()">Publish</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
