@@ -1,10 +1,29 @@
-<div class="container">
-	<div class="button-set align-center">
-		<div class="button gray" data-ng-click="getJobs('angular', 1)">Angular</div>
-		<div class="button gray" data-ng-click="getJobs('backbone', 1)">Backbone</div>
-		<div class="button gray" data-ng-click="getJobs('ember', 1)">Ember</div>
+<div id="job-searcher" class="row">
+	<div class="row">
+		<div class="col-24-24">
+			<h2>Search 1000s of Angular, Backbone and Ember jobs...</h2>
+		</div>
 	</div>
 
+	<div class="row">
+		<div class="col-24-24">
+			<input type="text" id="search_location" value="Melbourne, VIC">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-24-24">
+			<div class="button-set">
+				<div class="button gray" data-ng-click="selectJobType('angular')">Angular</div>
+				<div class="button gray" data-ng-click="selectJobType('backbone')">Backbone</div>
+				<div class="button gray" data-ng-click="selectJobType('ember')">Ember</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
 	<div data-row-css-class="row" 
 		 data-column-css-class="col-24-24 col-md-24-24 col-lg-12-24"
 		 data-columns-to-row="4"
@@ -18,8 +37,8 @@
 			</div>                                            
 	</div>
 
-	<Div class="row align-center">
-		<div class="load button" data-ng-click="loadMoreJobs()">
+	<Div class="row align-center" data-ng-if="selectedJobType">
+		<div class="load button" data-ng-click="loadMoreJobs(selectedJobType)">
 			Load More
 		</div>
 	</div>

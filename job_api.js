@@ -15,16 +15,35 @@ module.exports = function(express) {
 	api.get('/jobs/:keyword', function(req, res) {
 		var query = '&q=' + req.params.keyword;
 
+		console.log('--------========== Query Below ==========--------');
+		console.log(req.query);
+		console.log('--------========== Query End ==========--------');
+
 		if(req.query.page) {
 			var start = req.query.page * 20;
 			var limit = start + 20;
 
+			console.log(query);
+			console.log(req.query);
+
+			console.log('start');
+			console.log(start);
+
+			console.log('limit');
+			console.log(limit);
+
 			var query = query + '&start=' + start + '&limit=' + limit;
 		} 
 
+		console.log(query);
+
 		var url = buildCall(req, query);
 
-		requestify.get(url).then(function(response) {
+		console.log(url);
+
+		requestify.get(url).done(function(response) {
+			console.log('in');
+			console.log(response);
 			res.send(response);
 		});
 	});

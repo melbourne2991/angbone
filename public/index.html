@@ -16,8 +16,8 @@
 		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 	</head>
 
-	<body data-ng-controller="MainController" data-body>
-		<div id="header" data-header>
+	<body data-ng-controller="MainController" data-body data-scroll-directive>
+		<div id="header" data-header data-ng-css="{ collapsed: scroll_pos > 200 }">
 			<div class="inner">
 				<div id="logo"><img src="img/logo.png"></div>
 

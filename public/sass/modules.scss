@@ -1,6 +1,9 @@
+$header_height: 75px;
+$header_collapsed_height: 50px;
+
 #wrapper {
-	padding-top: 50px;
-	background: #F1F1F1;
+	padding-top: $header_height;
+	height: 100%;
 }
 
 [data-ui-view] {
@@ -12,17 +15,20 @@
 	width: 100%;
 	top:0;
 	background: #ffeb00;
-	height: 50px;
+	height: $header_height;
 	color: #fff;
+	z-index: 10;
+	transition: height .5s;
+
 
 	.inner {
-		height: 50px;	
-		position: relative;
+		height: $header_height;	
+		transition: height .5s;
 	}
 	.nav {
 		padding: 10px 0 10px 10px;
 		position: absolute;
-		bottom: 10px;
+		bottom: 3px;
 		right: 20px;
 	  	letter-spacing: 0.1em;
 
@@ -49,15 +55,30 @@
 	}
 }
 
+#header.collapsed {
+	height: $header_collapsed_height;
+}
+
+#header.collapsed .inner {
+	height: $header_collapsed_height;
+}
+
+#header.collapsed #logo {
+	img {
+		width: 200px;
+	}
+}
+
 #logo {
 	img {
-		width: 100%;
+		transition: width .5s;
+		width: 300px;
 	}
 	transition: all 0.3s;
 	border-radius: 5px;
 	width: 100px;
 	left: 20px;
-	bottom: 10px;
+	bottom: 0px;
 	position: absolute;
 	width: 150px;
 }
@@ -219,6 +240,7 @@ $sidebar_width: 300px;
 
 .button-set {
 	margin-bottom: 20px;
+	@include clearfix();
 }
 
 .button-set .button {
@@ -298,4 +320,10 @@ $sidebar_width: 300px;
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
+}
+
+
+#job-searcher {
+	background: #F1F1F1;
+	padding: 20px;
 }

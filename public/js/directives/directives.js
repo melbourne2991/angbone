@@ -34,19 +34,21 @@ directives.directive('gridRepeat', ['$compile', '$rootScope', function($compile,
 		var column_element 		= $('<div class="' + column_css_class + '"></div>');
 		var columns_to_row		= parseInt(attrs.columnsToRow) || 4;
 
-		// Clear Element on load.
-		el.html('');
+		var compileDirective = function(newValue) {
+			var _array = _.clone(newValue);
 
-		var compileDirective = function() {
-			var grid 	 			= [];
+			// Clear Element on load.
+			el.html('');
+
+			var grid = [];
 
 			// Clear element on scope change
 			el.html('');
 
 			// Break up array into array of rows
 			(function splicer() {
-				grid.push(array.splice(0, columns_to_row));
-				if(array.length > 0) splicer();
+				grid.push(_array.splice(0, columns_to_row));
+				if(_array.length > 0) splicer();
 			}());
 
 			// Build the grid
@@ -58,7 +60,6 @@ directives.directive('gridRepeat', ['$compile', '$rootScope', function($compile,
 				_.forEach(row, function(column, i) {
 					var newColumn = column_element.clone();
 					var populatedColumn = $(newColumn.html(el_inner));
-
 					var compiled = $compile(populatedColumn);
 					var columnScope = $rootScope.$new(true);
 
@@ -68,23 +69,19 @@ directives.directive('gridRepeat', ['$compile', '$rootScope', function($compile,
 
 					newRow.append(newColumn);
 				});
-			});			
+			});	
 		}
 
-		scope.$watch(array_name, function(newValue, oldValue) {
-			console.log(typeof newValue);
-
+		var array_watcher = function(newValue, oldValue) {
 			if(newValue !== oldValue && typeof newValue === 'object') {
-				array = newValue;
-
-				console.log('in');
-
-				compileDirective();
+				compileDirective(newValue);
 			}
-		});
+		};
+
+		scope.$watch(array_name, array_watcher, true);
 
 		if(typeof array === 'object')
-			compileDirective();
+			compileDirective(array);
 	}
 }]);
 
@@ -142,4 +139,23 @@ app.directive('ckEditor', [function () {
             };
         }
     };
-}])
+}]);
+
+app.directive('scrollDirective',  [function () {
+    return {
+
+    	link: function(scope, element) {
+	    	$(window).scroll(function (e) {
+	    		var scroll_pos = $(window).scrollTop();
+
+	    		if(scroll_pos > 200) {
+	    			console.log('in true')
+	    			scope.scrolled_1 = true;
+	    		} else if(scroll_pos < 10){
+	    			console.log('in false');
+    				scope.scrolled_1 = false;
+	    		}
+	    	});
+    	}
+    };
+}]);

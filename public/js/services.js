@@ -53,4 +53,15 @@ services.factory('Job', [
 		}
 }]);
 
+services.factory('User', [
+	'$http',
 
+	function($http) {
+		var User = function(data) {};
+
+		return {
+			getLocation: function() {
+				return $http.get('/findip');
+			}
+		};
+}]);

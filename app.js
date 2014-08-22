@@ -15,6 +15,12 @@ app.use(bodyParser.json());
 routes(app);
 app.use('/job_api', job_api(express));
 
+app.get('/findip', function(req, res) {
+	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+	res.send(ip);
+});
+
 
 app.use(express.static(__dirname + '/public'));
 
