@@ -1,13 +1,16 @@
-$header_height: 75px;
+$header_height: 50px;
 $header_collapsed_height: 50px;
 
 #wrapper {
+	@include clearfix();
 	padding-top: $header_height;
-	height: 100%;
+	background: #F0EEE7;
+	padding-bottom: 40px;
+	min-height: 1000px;
 }
 
 [data-ui-view] {
-
+	background: #F0EEE7;
 }
 
 #header {
@@ -26,6 +29,7 @@ $header_collapsed_height: 50px;
 		transition: height .5s;
 	}
 	.nav {
+		display: none;
 		padding: 10px 0 10px 10px;
 		position: absolute;
 		bottom: 3px;
@@ -71,8 +75,9 @@ $header_collapsed_height: 50px;
 
 #logo {
 	img {
-		transition: width .5s;
-		width: 300px;
+		// transition: width .5s;
+		// width: 300px;
+		width: 200px;
 	}
 	transition: all 0.3s;
 	border-radius: 5px;
@@ -96,17 +101,23 @@ $header_collapsed_height: 50px;
 	cursor: pointer;
 	margin-bottom: 20px;
 	border-radius: 5px;
+	background: #fff;
+	border-radius: 5px;
+	padding-bottom: 0px;
+	border: 1px darken(#F0EEE7, 10%) solid;
 
 	.content {
 		margin-bottom: 10px;
 		border-radius: 5px 5px 5px 5px;
 		background: #fff;
-		padding: 10px;
+		padding: 30px 20px 30px 20px;
+		line-height: 2.5em;
 	}
 
 	.header {
-		padding: 10px 0;
+		padding: 30px 20px 0px 20px;
 		color: #000;
+		font-size: 24px;
 	}
 
 	h3 {
@@ -117,14 +128,18 @@ $header_collapsed_height: 50px;
 		padding: 10px;
 		color: lighten(#000, 80%);
 		font-size: 12px;
-		background: #505050;
+		background: #312F2F;
 		border-radius: 5px;
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-bottom: 20px;
+		display: inline-block;
 
 		@include clearfix();
 
 		.date {
 			padding-top: 3px;
-			width: 60%;
+			// width: 60%;
 			float: left;
 			display: block;
 			padding-right: 5px;
@@ -155,11 +170,6 @@ $header_collapsed_height: 50px;
 
 .icon-comments {
 	width: 20px;
-}
-
-.container {
-	@include clearfix();
-	padding: 20px 10px;
 }
 
 // Admin
@@ -251,6 +261,7 @@ $sidebar_width: 300px;
 	background: none;
 	border: 1px dashed #000;
 	color: #000;
+	margin-top: 30px;
 }
 
 [data-load-more-results] {
@@ -324,6 +335,17 @@ $sidebar_width: 300px;
 
 
 #job-searcher {
-	background: #F1F1F1;
+	background: #F0EEE7;
 	padding: 20px;
+}
+
+.white_block {
+	// background: #fff;
+	border-radius: 5px;
+}
+
+@media(min-width: 768px) {
+	#header .nav {
+		display: inline-block;
+	}
 }

@@ -38,6 +38,15 @@ $margin-size: 20px;
 	text-align: center;
 }
 
+@mixin container {
+	@include clearfix();
+	padding: 20px 20px;
+}
+
+.container {
+	@include container();
+}
+
 
 @mixin columns($unit_prefix) {
 	@for $i from 1 through 24 {

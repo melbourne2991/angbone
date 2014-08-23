@@ -33,6 +33,7 @@ controllers.controller('HomeController', ['$scope', 'Job', 'User', function($sco
 
 		getJobs(keyword, page, function(results) {
 			$scope.jobListings = results.data
+			$scope.contentLoaded = true;
 		});
 	}
 

@@ -147,14 +147,6 @@ app.directive('scrollDirective',  [function () {
     	link: function(scope, element) {
 	    	$(window).scroll(function (e) {
 	    		var scroll_pos = $(window).scrollTop();
-
-	    		if(scroll_pos > 200) {
-	    			console.log('in true')
-	    			scope.scrolled_1 = true;
-	    		} else if(scroll_pos < 10){
-	    			console.log('in false');
-    				scope.scrolled_1 = false;
-	    		}
 	    	});
     	}
     };

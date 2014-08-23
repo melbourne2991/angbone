@@ -106,6 +106,14 @@ label {
 .align-center {
   text-align: center; }
 
+.container {
+  padding: 20px 20px; }
+  .container:before, .container:after {
+    content: " ";
+    display: table; }
+  .container:after {
+    clear: both; }
+
 .col-1-24 {
   display: block;
   float: left;
@@ -1465,22 +1473,33 @@ label {
     margin-bottom: 5px; }
 
 #wrapper {
-  padding-top: 75px;
-  height: 100%; }
+  padding-top: 50px;
+  background: #F0EEE7;
+  padding-bottom: 40px;
+  min-height: 1000px; }
+  #wrapper:before, #wrapper:after {
+    content: " ";
+    display: table; }
+  #wrapper:after {
+    clear: both; }
+
+[data-ui-view] {
+  background: #F0EEE7; }
 
 #header {
   position: fixed;
   width: 100%;
   top: 0;
   background: #ffeb00;
-  height: 75px;
+  height: 50px;
   color: #fff;
   z-index: 10;
   transition: height .5s; }
   #header .inner {
-    height: 75px;
+    height: 50px;
     transition: height .5s; }
   #header .nav {
+    display: none;
     padding: 10px 0 10px 10px;
     position: absolute;
     bottom: 3px;
@@ -1522,8 +1541,7 @@ label {
   position: absolute;
   width: 150px; }
   #logo img {
-    transition: width .5s;
-    width: 300px; }
+    width: 200px; }
 
 #body {
   height: 100%; }
@@ -1535,23 +1553,33 @@ label {
 .post {
   cursor: pointer;
   margin-bottom: 20px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  background: #fff;
+  border-radius: 5px;
+  padding-bottom: 0px;
+  border: 1px #dcd8c8 solid; }
   .post .content {
     margin-bottom: 10px;
     border-radius: 5px 5px 5px 5px;
     background: #fff;
-    padding: 10px; }
+    padding: 30px 20px 30px 20px;
+    line-height: 2.5em; }
   .post .header {
-    padding: 10px 0;
-    color: #000; }
+    padding: 30px 20px 0px 20px;
+    color: #000;
+    font-size: 24px; }
   .post h3 {
     margin: 0; }
   .post .meta {
     padding: 10px;
     color: #cccccc;
     font-size: 12px;
-    background: #505050;
-    border-radius: 5px; }
+    background: #312F2F;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: inline-block; }
     .post .meta:before, .post .meta:after {
       content: " ";
       display: table; }
@@ -1559,7 +1587,6 @@ label {
       clear: both; }
     .post .meta .date {
       padding-top: 3px;
-      width: 60%;
       float: left;
       display: block;
       padding-right: 5px; }
@@ -1582,14 +1609,6 @@ label {
 
 .icon-comments {
   width: 20px; }
-
-.container {
-  padding: 20px 10px; }
-  .container:before, .container:after {
-    content: " ";
-    display: table; }
-  .container:after {
-    clear: both; }
 
 #admin {
   position: relative;
@@ -1671,7 +1690,8 @@ label {
 .button.load {
   background: none;
   border: 1px dashed #000;
-  color: #000; }
+  color: #000;
+  margin-top: 30px; }
 
 [data-load-more-results] {
   text-align: center;
@@ -1732,5 +1752,12 @@ label {
     transform: scale(1);
     -webkit-transform: scale(1); } }
 #job-searcher {
-  background: #F1F1F1;
+  background: #F0EEE7;
   padding: 20px; }
+
+.white_block {
+  border-radius: 5px; }
+
+@media (min-width: 768px) {
+  #header .nav {
+    display: inline-block; } }
