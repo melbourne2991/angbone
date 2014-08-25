@@ -18,6 +18,11 @@ var app = angular.module('app', [
 			controller: 'HomeController',
 			url: '/',
 		})
+		.state('home.jobs', {
+			templateUrl: '/templates/job_results.html',
+			controller: 'JobResultsController',
+			url: 'jobs/:keyword'
+		})
 		.state('login', {
 			templateUrl: '/templates/login.html',
 			controller: 'LoginController',

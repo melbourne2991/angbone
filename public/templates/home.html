@@ -1,20 +1,20 @@
 <div id="job-searcher" class="row">
 	<div class="row">
 		<div class="col-24-24">
-			<h2>Search 1000s of Angular, Backbone and Ember jobs...</h2>
+			<h2>Search 1000s of Angular, Backbone and Ember jobs throughout Australia...</h2>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-24-24">
-			<input type="text" id="search_location" value="Melbourne, VIC">
+			<input type="text" id="search_location" data-ng-model="searchLocation">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-24-24">
 			<div class="button-set">
-				<div class="button gray" data-ng-click="selectJobType('angular')">Angular</div>
+				<div class="button gray" data-ng-click="selectJobType('angular')" data-ng-class="{ selected: selectedJobType == 'angular' }">Angular</div>
 				<div class="button gray" data-ng-click="selectJobType('backbone')">Backbone</div>
 				<div class="button gray" data-ng-click="selectJobType('ember')">Ember</div>
 			</div>
@@ -22,24 +22,5 @@
 	</div>
 </div>
 
-
-<div class="container white_block" data-ng-if="contentLoaded">
-		<div data-row-css-class="row" 
-			 data-column-css-class="col-24-24 col-md-24-24 col-lg-24-24"
-			 data-columns-to-row="4"
-			 data-grid-repeat="listing in jobListings">
-			 	<div class="post">
-					<div class="header"><h3>{{ listing.jobtitle }}</h3></div>
-					<div class="content">{{ listing.snippet }}</div>
-					<div class="meta">
-						<div class="date"><img src="img/calendar_icon.svg" class="icon-date">{{ listing.date }}</div>
-					</div>
-				</div>                                            
-	</div>
-
-	<Div class="row align-center" data-ng-if="selectedJobType">
-		<div class="load button" data-ng-click="loadMoreJobs(selectedJobType)">
-			Load More
-		</div>
-	</div>
+<div class="container white_block" data-ui-view="">
 </div>

@@ -37,6 +37,10 @@ html, body {
 h1, h2, h3, h4, h5, h6 {
   color: #505050; }
 
+a {
+  color: #4892CC;
+  text-decoration: none; }
+
 p {
   line-height: 1.5em; }
 
@@ -1551,7 +1555,6 @@ label {
   background: url("../img/use_your_illusion.png"); }
 
 .post {
-  cursor: pointer;
   margin-bottom: 20px;
   border-radius: 5px;
   background: #fff;
@@ -1562,19 +1565,24 @@ label {
     margin-bottom: 10px;
     border-radius: 5px 5px 5px 5px;
     background: #fff;
-    padding: 30px 20px 30px 20px;
+    padding: 20px 20px 20px 20px;
     line-height: 2.5em; }
+  .post .location {
+    padding: 20px 0 0 20px;
+    font-size: 1.3em;
+    color: #312f2f; }
   .post .header {
     padding: 30px 20px 0px 20px;
     color: #000;
     font-size: 24px; }
   .post h3 {
+    color: #4892CC;
     margin: 0; }
   .post .meta {
     padding: 10px;
     color: #cccccc;
     font-size: 12px;
-    background: #312F2F;
+    background: #312f2f;
     border-radius: 5px;
     margin-left: 20px;
     margin-right: 20px;
@@ -1719,7 +1727,7 @@ label {
   width: 40px;
   height: 40px;
   position: relative;
-  margin: 100px auto; }
+  margin: 30px auto 0 auto; }
 
 .double-bounce1, .double-bounce2 {
   width: 100%;
@@ -1752,8 +1760,11 @@ label {
     transform: scale(1);
     -webkit-transform: scale(1); } }
 #job-searcher {
-  background: #F0EEE7;
+  background: #000;
   padding: 20px; }
+  #job-searcher h2 {
+    color: #fff;
+    line-height: 1.5; }
 
 .white_block {
   border-radius: 5px; }

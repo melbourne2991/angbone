@@ -2,20 +2,9 @@ var controllers = angular.module('app.controllers', ['app.services']);
 
 controllers.controller('MainController', ['$scope', function($scope) {
 	$scope.scrolled_1 = false;
-
-	$scope.$watch('scrolled_1', function(n, o) {
-		console.log(n);
-		console.log(o);
-	})
 }]);
 
-controllers.controller('HomeController', ['$scope', 'Job', 'User', function($scope, Job, User) {	
-	// Get user location
-	User.getLocation().then(function(results) {
-		console.log(results);
-	});
-
-
+controllers.controller('HomeController', ['$scope', '$state', 'Job', 'User', 'UserLocation', function($scope, $state, Job, User, UserLocation) {	
 	// Job selection, loading etc
 	var page = 0;
 
@@ -24,21 +13,58 @@ controllers.controller('HomeController', ['$scope', 'Job', 'User', function($sco
 	};
 
 	$scope.selectedJobType 	= false;
+
+	$scope.selectedJobTypes = {
+		angular: false,
+		backbone: false,
+		ember: false
+	}
+
 	$scope.jobListings = [];
 
-	$scope.selectJobType = function(keyword, page) {
-		page = 0;
+	// Get User Location First
+	User.getLocation().then(function() {
+		$scope.searchLocation = UserLocation.string;
 
-		$scope.selectedJobType = keyword;
+		$scope.selectJobType = function(keyword) {
+			$scope.selectedJobTypes = {
+				angular: false,
+				backbone: false,
+				ember: false
+			};
 
-		getJobs(keyword, page, function(results) {
+			$scope.contentLoaded = false;
+			$state.go('home.jobs', { keyword: keyword });
+		};
+	});
+}]);
+
+controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User', function($scope, $state, Job, User) {	
+	// Start page at 0
+	var page = 0;
+
+	var getJobs = function(keyword, page, location, cb) {
+		Job.getJobs(keyword, page, location).then(cb);
+	};
+
+	$scope.selectedJobType = $state.params.keyword;
+
+	if($scope.selectedJobTypes[$scope.selectedJobType]) 
+		$scope.selectedJobTypes[$scope.selectedJobType] = true;
+
+
+	// Get User Location First
+	User.getLocation().then(function() {
+		getJobs($scope.selectedJobType, page, $scope.searchLocation, function(results) {
 			$scope.jobListings = results.data
 			$scope.contentLoaded = true;
-		});
-	}
+		});	
+	});
 
 	$scope.loadMoreJobs = function(keyword) {
 		page++;
+
+		$scope.contentLoaded = false;
 
 		getJobs(keyword, page, function(results) {
 			if(typeof $scope.jobListings === 'object') {
@@ -49,6 +75,7 @@ controllers.controller('HomeController', ['$scope', 'Job', 'User', function($sco
 				});
 
 				$scope.jobListings = jobListings;
+				$scope.contentLoaded = true;
 			}
 		});
 	};

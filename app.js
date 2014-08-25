@@ -3,6 +3,7 @@ var app 		= express();
 var bodyParser 	= require('body-parser');
 var cookieParser = require('cookie-parser');
 var sessions	= require('cookie-session');
+var requestify = require('requestify');
 var routes = require('./routes');
 var job_api = require('./job_api');
 
@@ -18,7 +19,9 @@ app.use('/job_api', job_api(express));
 app.get('/findip', function(req, res) {
 	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-	res.send(ip);
+	requestify.get('http://freegeoip.net/json/' + ip).done(function(response) {
+		res.send(response);
+	});
 });
 
 
