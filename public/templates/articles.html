@@ -1,1 +1,8 @@
-yo
+<div id="articles" data-masonry="">
+	<div class="masonry-brick" ng-repeat="article in articles" style="width:33.3333%">
+		<div class="post">
+			<div class="header"><h3>{{ article.title }}</h3></div>
+			<div class="content">{{ article.content }}</div>
+		</div>
+	</div>
+</div>

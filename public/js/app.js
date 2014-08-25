@@ -5,6 +5,7 @@
  */
 var app = angular.module('app', [
 	'ngAnimate',
+	'wu.masonry',
 	'ui.router',
 	'app.services',
 	'app.directives',

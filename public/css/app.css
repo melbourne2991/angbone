@@ -1776,3 +1776,7 @@ label {
 @media (min-width: 768px) {
   #header .nav {
     display: inline-block; } }
+#articles .post {
+  margin-bottom: 0; }
+#articles .masonry-brick {
+  padding: 10px; }

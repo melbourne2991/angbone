@@ -366,3 +366,14 @@ $sidebar_width: 300px;
 		display: inline-block;
 	}
 }
+
+
+#articles {
+	.post {
+		margin-bottom: 0;
+	}
+
+	.masonry-brick {
+		padding: 10px;
+	}
+}
