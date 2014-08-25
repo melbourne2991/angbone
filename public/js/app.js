@@ -16,7 +16,13 @@ var app = angular.module('app', [
 		.state('home', {
 			templateUrl: '/templates/home.html',
 			controller: 'HomeController',
+			abstract: true,
 			url: '/',
+		})
+		.state('home.articles', {
+			templateUrl: '/templates/articles.html',
+			controller: 'ArticlesController',
+			url: ''
 		})
 		.state('home.jobs', {
 			templateUrl: '/templates/job_results.html',

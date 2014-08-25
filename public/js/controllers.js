@@ -12,7 +12,7 @@ controllers.controller('HomeController', ['$scope', '$state', 'Job', 'User', 'Us
 			ember: false
 		}
 	};
-	
+
 	resetSelections();
 
 	if($state.params.keyword) {
@@ -37,6 +37,10 @@ controllers.controller('HomeController', ['$scope', '$state', 'Job', 'User', 'Us
 		};
 	});
 }]);
+
+controllers.controller('ArticlesController', ['$scope', '$state', 'Job', 'User', function($scope, $state, Job, User) {	
+	console.log('whooogohogog');
+}]);	
 
 controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User', function($scope, $state, Job, User) {	
 	// Start page at 0
