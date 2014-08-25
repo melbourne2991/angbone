@@ -5,33 +5,32 @@ controllers.controller('MainController', ['$scope', function($scope) {
 }]);
 
 controllers.controller('HomeController', ['$scope', '$state', 'Job', 'User', 'UserLocation', function($scope, $state, Job, User, UserLocation) {	
-	// Job selection, loading etc
-	var page = 0;
-
-	var getJobs = function(keyword, page, cb) {
-		Job.getJobs(keyword, page).then(cb);
+	var resetSelections = function() {
+		$scope.jobTypeSelections = {
+			angular: false,
+			backbone: false,
+			ember: false
+		}
 	};
+	
+	resetSelections();
 
-	$scope.selectedJobType 	= false;
-
-	$scope.selectedJobTypes = {
-		angular: false,
-		backbone: false,
-		ember: false
+	if($state.params.keyword) {
+		$scope.selectedJobType = $state.params.keyword;
+		$scope.jobTypeSelections[$scope.selectedJobType] = true;
+	} else {
+		$scope.selectedJobType 	= false;
 	}
-
-	$scope.jobListings = [];
 
 	// Get User Location First
 	User.getLocation().then(function() {
 		$scope.searchLocation = UserLocation.string;
 
 		$scope.selectJobType = function(keyword) {
-			$scope.selectedJobTypes = {
-				angular: false,
-				backbone: false,
-				ember: false
-			};
+			resetSelections();
+
+			$scope.selectedJobType = keyword;
+			$scope.jobTypeSelections[$scope.selectedJobType] = true;
 
 			$scope.contentLoaded = false;
 			$state.go('home.jobs', { keyword: keyword });
@@ -47,11 +46,7 @@ controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User
 		Job.getJobs(keyword, page, location).then(cb);
 	};
 
-	$scope.selectedJobType = $state.params.keyword;
-
-	if($scope.selectedJobTypes[$scope.selectedJobType]) 
-		$scope.selectedJobTypes[$scope.selectedJobType] = true;
-
+	$scope.jobListings = [];
 
 	// Get User Location First
 	User.getLocation().then(function() {

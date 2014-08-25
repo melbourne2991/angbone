@@ -1765,6 +1765,10 @@ label {
   #job-searcher h2 {
     color: #fff;
     line-height: 1.5; }
+  #job-searcher .button.selected {
+    background: #ffeb00;
+    border-bottom: #ccbc00 4px solid;
+    color: #000; }
 
 .white_block {
   border-radius: 5px; }

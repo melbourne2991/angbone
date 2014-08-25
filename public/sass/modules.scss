@@ -348,6 +348,12 @@ $sidebar_width: 300px;
 		color: #fff;
 		line-height: 1.5;
 	}
+
+	.button.selected {
+		background: #ffeb00;
+		border-bottom: darken(#ffeb00, 10%) 4px solid;
+		color: #000;
+	}
 }
 
 .white_block {

@@ -21,9 +21,6 @@ services.factory('Job', [
 			getJobs: function(keyword, page, location) {
 				var url = '/job_api/jobs/' + keyword + '?page=' + page;
 
-				console.log('in service');
-				console.log(location)
-
 				if(location) {
 					url += '&location=' + encodeURI(location);
 				} else if(UserLocation.state && UserLocation.city) {
