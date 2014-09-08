@@ -15,7 +15,7 @@
 <div id="articles" data-masonry="">
 	<div class="masonry-brick col-md-12-24" ng-repeat="listing in jobListings">
 	 	<div class="post job">
-			<div class="header"><h3><a href="{{ listing.url }}" target="_blank">{{ listing.jobtitle }}</a></h3></div>
+			<div class="header"><h3><a href="{{ listing.url }}" tabindex="-1" target="_blank">{{ listing.jobtitle }}</a></h3></div>
 			<div class="location">{{ listing.formattedLocation }}</div>
 			<div class="content">{{ listing.snippet }}</div>
 			<div class="meta">
