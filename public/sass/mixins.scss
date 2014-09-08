@@ -64,8 +64,12 @@
 
 @mixin color-button($color) {
     background: $color;
-    border-bottom: 4px darken($color, 10%) solid;
+
+    // @if(i != 0) {
+    //   border-bottom: 4px darken($color, 10%) solid;
+    // }
+
     &:hover {
-      border-bottom: 4px darken($color, 5%) solid;
+      // border-bottom: 4px darken($color, 5%) solid;
     }
 }

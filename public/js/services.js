@@ -62,6 +62,20 @@ services.factory('Job', [
 		}
 }]);
 
+services.factory('RssFeed', [
+	'$http',
+	'UserLocation',
+
+	function($http, UserLocation) {
+		return {
+			jsDaily: function() {
+				$http.get('http://feeds.feedburner.com/dailyjs?format=xml').then(function(results) {
+					console.log(results);
+				});
+			}
+		}
+}]);	
+
 services.factory('User', [
 	'$http',
 	'UserLocation',

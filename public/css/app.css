@@ -1570,19 +1570,20 @@ label {
   .post .location {
     padding: 20px 0 0 20px;
     font-size: 1.3em;
-    color: #312f2f; }
+    color: #1b1b1b; }
   .post .header {
     padding: 30px 20px 0px 20px;
     color: #000;
     font-size: 24px; }
   .post h3 {
     color: #4892CC;
+    line-height: 1.5;
     margin: 0; }
   .post .meta {
     padding: 10px;
     color: #cccccc;
     font-size: 12px;
-    background: #312f2f;
+    background: #1b1b1b;
     border-radius: 5px;
     margin-left: 20px;
     margin-right: 20px;
@@ -1659,33 +1660,26 @@ label {
 .button {
   padding: 10px 20px;
   background: #505050;
-  border-bottom: 4px #373737 solid;
   color: #fff;
   font-weight: bolder;
   border-radius: 5px;
   display: inline-block;
   cursor: pointer; }
   .button:hover {
-    background: #4b4b4b;
-    border-bottom: 4px #434343 solid; }
+    background: #4b4b4b; }
 
 .button.green {
-  background: #02ac38;
-  border-bottom: 4px #017a28 solid; }
-  .button.green:hover {
-    border-bottom: 4px #029330 solid; }
+  background: #02ac38; }
 
 .button.orange {
-  background: #e6b800;
-  border-bottom: 4px #b38f00 solid; }
-  .button.orange:hover {
-    border-bottom: 4px #cda400 solid; }
+  background: #e6b800; }
+
+.button.yellow {
+  background: #ffeb00;
+  color: #000; }
 
 .button.gray {
-  background: #505050;
-  border-bottom: 4px #373737 solid; }
-  .button.gray:hover {
-    border-bottom: 4px #434343 solid; }
+  background: #1b1b1b; }
 
 .button-set {
   margin-bottom: 20px; }
@@ -1760,15 +1754,17 @@ label {
     transform: scale(1);
     -webkit-transform: scale(1); } }
 #job-searcher {
-  background: #000;
+  background: black url("../img/banner_bg_1.jpg");
+  background-size: cover;
   padding: 20px; }
   #job-searcher h2 {
     color: #fff;
-    line-height: 1.5; }
+    line-height: 1.5;
+    font-size: 1.9em; }
   #job-searcher .button.selected {
-    background: #ffeb00;
-    border-bottom: #ccbc00 4px solid;
-    color: #000; }
+    border: #fff 2px dashed; }
+  #job-searcher .button {
+    margin-bottom: 10px; }
 
 .white_block {
   border-radius: 5px; }

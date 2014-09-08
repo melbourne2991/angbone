@@ -1,8 +1,8 @@
-<div data-row-css-class="row" 
-	 data-column-css-class="col-24-24 col-md-24-24 col-lg-24-24"
+<!-- <div data-row-css-class="row" 
+	 data-column-css-class="col-24-24 col-md-24-24 col-lg-12-24"
 	 data-columns-to-row="4"
 	 data-grid-repeat="listing in jobListings">
-	 	<div class="post">
+	 	<div class="post job">
 			<div class="header"><h3><a href="{{ listing.url }}" target="_blank">{{ listing.jobtitle }}</a></h3></div>
 			<div class="location">{{ listing.formattedLocation }}</div>
 			<div class="content">{{ listing.snippet }}</div>
@@ -10,6 +10,19 @@
 				<div class="date"><img src="img/calendar_icon.svg" class="icon-date">{{ listing.date }}</div>
 			</div>
 		</div>                                            
+</div> -->
+
+<div id="articles" data-masonry="">
+	<div class="masonry-brick col-md-12-24" ng-repeat="listing in jobListings">
+	 	<div class="post job">
+			<div class="header"><h3><a href="{{ listing.url }}" target="_blank">{{ listing.jobtitle }}</a></h3></div>
+			<div class="location">{{ listing.formattedLocation }}</div>
+			<div class="content">{{ listing.snippet }}</div>
+			<div class="meta">
+				<div class="date"><img src="img/calendar_icon.svg" class="icon-date">{{ listing.date }}</div>
+			</div>
+		</div>   
+	</div>
 </div>
 
 <Div class="row align-center" data-ng-switch="contentLoaded">

@@ -5,12 +5,15 @@ controllers.controller('MainController', ['$scope', function($scope) {
 }]);
 
 controllers.controller('HomeController', ['$scope', '$state', 'Job', 'User', 'UserLocation', function($scope, $state, Job, User, UserLocation) {	
+	$scope.contentLoaded = false;
+	$scope.jobTypeSelections;
+
 	var resetSelections = function() {
 		$scope.jobTypeSelections = {
 			angular: false,
 			backbone: false,
 			ember: false
-		}
+		};
 	};
 
 	resetSelections();
@@ -19,26 +22,29 @@ controllers.controller('HomeController', ['$scope', '$state', 'Job', 'User', 'Us
 		$scope.selectedJobType = $state.params.keyword;
 		$scope.jobTypeSelections[$scope.selectedJobType] = true;
 	} else {
-		$scope.selectedJobType 	= false;
+		// Angular as default
+		$scope.selectedJobType 	= 'angular';
+		$scope.jobTypeSelections['angular'] = true;
 	}
 
-	// Get User Location First
 	User.getLocation().then(function() {
-		$scope.searchLocation = UserLocation.string;
-
-		$scope.selectJobType = function(keyword) {
-			resetSelections();
-
-			$scope.selectedJobType = keyword;
-			$scope.jobTypeSelections[$scope.selectedJobType] = true;
-
-			$scope.contentLoaded = false;
-			$state.go('home.jobs', { keyword: keyword });
-		};
+		$scope.searchLocation = UserLocation.city + ', ' + UserLocation.state;
 	});
+
+	$scope.selectJobType = function(keyword) {
+		resetSelections();
+
+		$scope.selectedJobType = keyword;
+		$scope.jobTypeSelections[$scope.selectedJobType] = true;
+		// $state.go('home.jobs', { keyword: keyword });
+	};
+
+	$scope.runSearch = function() {
+		$state.go('home.jobs', { keyword: $scope.selectedJobType });
+	}
 }]);
 
-controllers.controller('ArticlesController', ['$scope', '$state', 'Job', 'User', function($scope, $state, Job, User) {	
+controllers.controller('ArticlesController', ['$scope', '$state', 'Job', 'User', 'RssFeed', function($scope, $state, Job, User, RssFeed) {	
 	$scope.articles = [
 		{title: 'Random Article Title Content Goes Here', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'},
 		{title: 'Random Article Title Content Goes Here', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'},
@@ -65,6 +71,8 @@ controllers.controller('ArticlesController', ['$scope', '$state', 'Job', 'User',
 		{title: 'Random Article Title Content Goes Here', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'},
 		{title: 'Random Article Title Content Goes Here', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'}
 	];
+
+	RssFeed.jsDaily();
 }]);	
 
 controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User', function($scope, $state, Job, User) {	
@@ -78,7 +86,7 @@ controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User
 	$scope.jobListings = [];
 
 	// Get User Location First
-	User.getLocation().then(function() {
+	User.getLocation().then(function(results) {
 		getJobs($scope.selectedJobType, page, $scope.searchLocation, function(results) {
 			$scope.jobListings = results.data
 			$scope.contentLoaded = true;
@@ -90,7 +98,7 @@ controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User
 
 		$scope.contentLoaded = false;
 
-		getJobs(keyword, page, function(results) {
+		getJobs(keyword, page, $scope.searchLocation, function(results) {
 			if(typeof $scope.jobListings === 'object') {
 				var jobListings = _.clone($scope.jobListings);
 

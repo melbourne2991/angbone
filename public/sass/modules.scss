@@ -127,6 +127,7 @@ $header_collapsed_height: 50px;
 
 	h3 {
 		color: #4892CC;
+		line-height: 1.5;
 		margin: 0;
 	}
 
@@ -228,7 +229,6 @@ $sidebar_width: 300px;
 .button {
 	padding: 10px 20px;
 	background: $base_color;
-	border-bottom: 4px darken($base_color, 10%) solid;
 	color: #fff;
 	font-weight: bolder;
 	border-radius: 5px;
@@ -238,7 +238,7 @@ $sidebar_width: 300px;
 
 	&:hover {
 		background: darken($base_color, 2%);
-		border-bottom: 4px darken($base_color, 5%) solid;
+		// border-bottom: 4px darken($base_color, 5%) solid;
 	}
 }
 
@@ -250,8 +250,13 @@ $sidebar_width: 300px;
 	@include color-button(#E6B800);
 }
 
+.button.yellow {
+	@include color-button(#ffeb00);
+	color:#000;
+}
+
 .button.gray {
-	@include color-button(#505050);
+	@include color-button(#1B1B1B);
 }
 
 .button-set {
@@ -341,18 +346,22 @@ $sidebar_width: 300px;
 
 
 #job-searcher {
-	background: #000;
+	background: #000 url('../img/banner_bg_1.jpg');
+	background-size: cover;
 	padding: 20px;
 
 	h2 {
 		color: #fff;
 		line-height: 1.5;
+		font-size: 1.9em;
 	}
 
 	.button.selected {
-		background: #ffeb00;
-		border-bottom: darken(#ffeb00, 10%) 4px solid;
-		color: #000;
+		border: #fff 2px dashed;
+	}
+
+	.button {
+		margin-bottom: 10px;
 	}
 }
 
@@ -369,6 +378,10 @@ $sidebar_width: 300px;
 
 
 #articles {
+	.masonry-brick {
+		// width: 50%;
+	}
+
 	.post {
 		margin-bottom: 0;
 	}

@@ -1,22 +1,29 @@
 <div id="job-searcher" class="row">
-	<div class="row">
-		<div class="col-24-24">
-			<!-- <h2>Search 1000s of Angular, Backbone and Ember jobs throughout Australia...</h2> -->
+	<div class="col-24-24 col-md-12-24">
+		<div class="row">
+			<div class="col-24-24">
+				<h2>Find Angular, Backbone and Ember jobs throughout Australia...</h2>
+			</div>
 		</div>
-	</div>
 
-	<div class="row">
-		<div class="col-24-24">
-			<input type="text" id="search_location" data-ng-model="searchLocation">
+		<div class="row">
+			<div class="col-24-24">
+				<input type="text" id="search_location" data-ng-model="searchLocation" data-ng-click="searchLocation = ''" placeholder="City, State">
+			</div>
 		</div>
-	</div>
 
-	<div class="row">
-		<div class="col-24-24">
-			<div class="button-set">
-				<div class="button gray" data-ng-click="selectJobType('angular')" data-ng-class="{ selected: jobTypeSelections.angular }">Angular</div>
-				<div class="button gray" data-ng-click="selectJobType('backbone')" data-ng-class="{ selected: jobTypeSelections.backbone }">Backbone</div>
-				<div class="button gray" data-ng-click="selectJobType('ember')" data-ng-class="{ selected: jobTypeSelections.ember }">Ember</div>
+		<div class="row">
+			<div class="col-20-24">
+				<div class="button-set">
+					<div class="button gray" data-ng-click="selectJobType('angular')" data-ng-class="{ selected: jobTypeSelections.angular }">Angular</div>
+					<div class="button gray" data-ng-click="selectJobType('backbone')" data-ng-class="{ selected: jobTypeSelections.backbone }">Backbone</div>
+					<div class="button gray" data-ng-click="selectJobType('ember')" data-ng-class="{ selected: jobTypeSelections.ember }">Ember</div>
+					<div class="button yellow" data-ng-click="runSearch()">GO!</div>
+				</div>
+			</div>
+
+			<div class="col-4-24">
+
 			</div>
 		</div>
 	</div>
