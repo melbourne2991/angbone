@@ -1,7 +1,16 @@
 var controllers = angular.module('app.controllers', ['app.services']);
 
-controllers.controller('MainController', ['$scope', function($scope) {
+controllers.controller('MainController', ['$scope', '$timeout', function($scope, $timeout) {
 	$scope.scrolled_1 = false;
+
+	$scope.newActionNotification  = function(text) {
+		$scope.showActionNotification = true;
+		$scope.actionNotificationText = text;
+
+		$timeout(function() {
+			$scope.showActionNotification = false
+		}, 3000);
+	}
 }]);
 
 controllers.controller('HomeController', ['$scope', '$state', 'Job', 'User', 'UserLocation', function($scope, $state, Job, User, UserLocation) {	
@@ -75,7 +84,7 @@ controllers.controller('ArticlesController', ['$scope', '$state', 'Job', 'User',
 	RssFeed.jsDaily();
 }]);	
 
-controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User', function($scope, $state, Job, User) {	
+controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User', 'Shortlist', function($scope, $state, Job, User, Shortlist) {	
 	// Start page at 0
 	var page = 0;
 
@@ -110,5 +119,10 @@ controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User
 				$scope.contentLoaded = true;
 			}
 		});
+	};
+
+	$scope.addToShortlist = function(job) {
+
+		Shortlist.push(job);
 	};
 }]);

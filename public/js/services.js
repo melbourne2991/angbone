@@ -130,3 +130,5 @@ services.factory('User', [
 }]);
 
 services.value('UserLocation', {state: null , city: null, string: null});
+
+services.value('Shortlist', []);

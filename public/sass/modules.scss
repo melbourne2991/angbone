@@ -377,6 +377,14 @@ $sidebar_width: 300px;
 }
 
 
+.post.job {
+	.add_to_shortlist {
+		margin-right: 10px;
+		padding: 12px 20px;
+		float: right;
+	}
+}
+
 #articles {
 	.masonry-brick {
 		// width: 50%;

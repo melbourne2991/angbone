@@ -27,6 +27,6 @@ app.get('/findip', function(req, res) {
 
 app.use(express.static(__dirname + '/public'));
 
-if(app.listen(80)) console.log('App Listening on ' + '80');
+if(app.listen(3000)) console.log('App Listening on ' + '3000');
 
 

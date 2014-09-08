@@ -1772,6 +1772,11 @@ label {
 @media (min-width: 768px) {
   #header .nav {
     display: inline-block; } }
+.post.job .add_to_shortlist {
+  margin-right: 10px;
+  padding: 12px 20px;
+  float: right; }
+
 #articles .post {
   margin-bottom: 0; }
 #articles .masonry-brick {

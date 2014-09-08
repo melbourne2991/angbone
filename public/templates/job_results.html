@@ -14,12 +14,20 @@
 
 <div id="articles" data-masonry="">
 	<div class="masonry-brick col-md-12-24" ng-repeat="listing in jobListings">
-	 	<div class="post job">
+	 	<div class="post job row">
 			<div class="header"><h3><a href="{{ listing.url }}" tabindex="-1" target="_blank">{{ listing.jobtitle }}</a></h3></div>
 			<div class="location">{{ listing.formattedLocation }}</div>
 			<div class="content">{{ listing.snippet }}</div>
-			<div class="meta">
-				<div class="date"><img src="img/calendar_icon.svg" class="icon-date">{{ listing.date }}</div>
+			<div class="footer">
+				<div class="col-14-24">
+					<div class="meta">
+						<div class="date"><img src="img/calendar_icon.svg" class="icon-date">{{ listing.date }}</div>
+					</div>
+				</div>
+
+				<div class="col-10-24">
+					<div class="add_to_shortlist button" data-ng-click="addToShortlist(listing)">Add to Shortlist</div>
+				</div>
 			</div>
 		</div>   
 	</div>
