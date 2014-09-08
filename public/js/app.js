@@ -11,7 +11,7 @@ var app = angular.module('app', [
 	'app.directives',
 	'app.controllers'
 ]).config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function($httpProvider, $stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.when('', '/');
+	$urlRouterProvider.when('', 'jobs/angular');
 
 	$stateProvider
 		.state('home', {
