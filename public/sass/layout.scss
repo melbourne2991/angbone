@@ -30,6 +30,16 @@ $margin-size: 20px;
 	width: 33.3333333333%;
 }
 
+.unit .unit {
+	&:first-child {
+		padding-left: 0;
+	}
+
+	&:last-child {
+		padding-right: 0;
+	}
+}
+
 .align-right {
 	text-align: right;
 }
@@ -46,7 +56,6 @@ $margin-size: 20px;
 .container {
 	@include container();
 }
-
 
 @mixin columns($unit_prefix) {
 	@for $i from 1 through 24 {

@@ -19,6 +19,18 @@ p {
 	line-height: 1.5em;
 }
 
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+}
+
 input[type="text"], input[type="password"] {
 	border: 1px solid;
 	display: block;

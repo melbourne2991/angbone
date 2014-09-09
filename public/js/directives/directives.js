@@ -121,6 +121,25 @@ directives.directive('loginDirective', ['Login', 'currentUser', '$state', functi
 	}
 }]);
 
+app.directive('dropdown', ['$timeout', function($timeout) {
+	return {
+		scope: {
+			dropdown: '=',
+			items: '='
+		},
+		transclude: false,
+		link: function(scope, element, attrs) {
+			$timeout(function() {
+				var lis = element.find('li');
+
+				_.forEach(lis, function(li, i) {
+					console.log(li);
+				});
+			});
+		}
+	}
+}]);
+
 app.directive('ckEditor', [function () {
     return {
         require: '?ngModel',

@@ -1,7 +1,18 @@
 var controllers = angular.module('app.controllers', ['app.services']);
 
 controllers.controller('MainController', ['$scope', '$timeout', function($scope, $timeout) {
-	$scope.scrolled_1 = false;
+	$scope.topNav = {
+		visible: false,
+		items: [
+			{ text: 'Jobs', link: ''},
+			{ text: 'Shortlist', link: ''},
+		]
+	};
+
+	$scope.actionNotification = {
+		visible: false,
+		text: ''
+	};
 
 	$scope.newActionNotification  = function(text) {
 		$scope.actionNotification = {
