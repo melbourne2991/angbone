@@ -1536,6 +1536,23 @@ label {
 #header.collapsed #logo img {
   width: 200px; }
 
+#notifications-bar {
+  background-color: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  height: 0;
+  width: 100%;
+  z-index: 10;
+  transition: height .5s;
+  overflow: hidden;
+  position: fixed;
+  top: 50px;
+  line-height: 50px;
+  padding: 0 20px; }
+
+#notifications-bar.show {
+  height: 50px; }
+
 #logo {
   transition: all 0.3s;
   border-radius: 5px;

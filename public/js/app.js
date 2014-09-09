@@ -1,8 +1,5 @@
 'use strict';
 
-/**
- * Binds a TinyMCE widget to <textarea> elements.
- */
 var app = angular.module('app', [
 	'ngAnimate',
 	'wu.masonry',
@@ -29,6 +26,11 @@ var app = angular.module('app', [
 			templateUrl: '/templates/job_results.html',
 			controller: 'JobResultsController',
 			url: 'jobs/:keyword'
+		})
+		.state('shortlist', {
+			templateUrl: '/templates/shortlist.html',
+			controller: 'ShortlistController',
+			url: '/shortlisted'
 		})
 		.state('login', {
 			templateUrl: '/templates/login.html',

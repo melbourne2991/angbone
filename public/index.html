@@ -34,9 +34,7 @@
 			</div>
 		</div>
 
-		<div id="notifications-bar">
-			
-		</div>
+		<div id="notifications-bar" data-ng-class="{ show: actionNotification.visible }">{{ actionNotification.text }}</div>
 		
 		<div id="wrapper">
 			<div data-ui-view="">

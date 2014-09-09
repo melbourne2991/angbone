@@ -4,11 +4,13 @@ controllers.controller('MainController', ['$scope', '$timeout', function($scope,
 	$scope.scrolled_1 = false;
 
 	$scope.newActionNotification  = function(text) {
-		$scope.showActionNotification = true;
-		$scope.actionNotificationText = text;
+		$scope.actionNotification = {
+			visible: true,
+			text: text
+		};
 
 		$timeout(function() {
-			$scope.showActionNotification = false
+			$scope.actionNotification.visible = false;
 		}, 3000);
 	}
 }]);
@@ -45,7 +47,6 @@ controllers.controller('HomeController', ['$scope', '$state', 'Job', 'User', 'Us
 
 		$scope.selectedJobType = keyword;
 		$scope.jobTypeSelections[$scope.selectedJobType] = true;
-		// $state.go('home.jobs', { keyword: keyword });
 	};
 
 	$scope.runSearch = function() {
@@ -122,7 +123,8 @@ controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User
 	};
 
 	$scope.addToShortlist = function(job) {
-
-		Shortlist.push(job);
+		$scope.newActionNotification('Job added to shortlist');
+		console.log(job);
+		// Shortlist.push(job);
 	};
 }]);

@@ -131,4 +131,16 @@ services.factory('User', [
 
 services.value('UserLocation', {state: null , city: null, string: null});
 
-services.value('Shortlist', []);
+services.factory('Shortlist', [
+	'$http',
+
+	function($http) {
+		return {
+			getShortlist: function() {
+				return $http.get('/shortlist');
+			},
+			updateShortList: function(val) {
+				return $http.post('/shortlist', val);
+			}
+		}
+}]);
