@@ -12,23 +12,23 @@ var app = angular.module('app', [
 
 	$stateProvider
 		.state('home', {
-			templateUrl: '/templates/home.html',
+			templateUrl: 'templates/home.html',
 			controller: 'HomeController',
 			abstract: true,
 			url: '/',
 		})
 		.state('home.articles', {
-			templateUrl: '/templates/articles.html',
+			templateUrl: 'templates/articles.html',
 			controller: 'ArticlesController',
 			url: ''
 		})
 		.state('home.jobs', {
-			templateUrl: '/templates/job_results.html',
+			templateUrl: 'templates/job_results.html',
 			controller: 'JobResultsController',
 			url: 'jobs/:keyword'
 		})
 		.state('shortlist', {
-			templateUrl: '/templates/shortlist.html',
+			templateUrl: 'templates/shortlist.html',
 			controller: 'ShortlistController',
 			url: '/shortlisted'
 		})
@@ -38,12 +38,12 @@ var app = angular.module('app', [
 			url: '/login'
 		})
 		.state('admin', {
-			templateUrl: '/templates/admin.html',
+			templateUrl: 'templates/admin.html',
 			controller: 'AdminController',
 			url: '/admin'
 		})
 		.state('admin.posts', {
-			templateUrl: '/templates/admin_posts.html',
+			templateUrl: 'templates/admin_posts.html',
 			controller: 'AdminPostsController',
 			url: '/posts'
 		});
