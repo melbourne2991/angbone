@@ -19,7 +19,7 @@ services.factory('Job', [
 
 			},
 			getJobs: function(keyword, page, location) {
-				var url = '/job_api/jobs/' + keyword + '?page=' + page;
+				var url = 'job_api/jobs/' + keyword + '?page=' + page;
 
 				if(location) {
 					url += '&location=' + encodeURI(location);
@@ -85,7 +85,7 @@ services.factory('User', [
 
 		return {
 			getLocation: function() {
-				return $http.get('/findip').then(function(results) {
+				return $http.get('findip').then(function(results) {
 					var obj = JSON.parse(results.data.body)
 					var zipcode = parseInt(obj.zipcode, 10);
 					
@@ -137,10 +137,10 @@ services.factory('Shortlist', [
 	function($http) {
 		return {
 			getShortlist: function() {
-				return $http.get('/shortlist');
+				return $http.get('shortlist');
 			},
 			updateShortList: function(val) {
-				return $http.post('/shortlist', val);
+				return $http.post('shortlist', val);
 			}
 		}
 }]);
