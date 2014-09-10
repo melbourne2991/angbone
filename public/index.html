@@ -22,7 +22,7 @@
 		<div id="header" data-header data-ng-css="{ collapsed: scroll_pos > 400 }">
 			<div class="inner">
 				<div id="logo"><img src="img/logo.png"></div>
-				<div id="nav-icon" data-ng-click="topNav.visible = !topNav.visible">
+				<div id="nav-icon" data-ng-click="topNav.visibility = !topNav.visibility">
 					<span></span>
 					<span></span>
 					<span></span>
@@ -41,14 +41,14 @@
 
 		<div class="dropdown" id="header-dropdown">
 			<div id="notifications-bar" data-ng-class="{ show: actionNotification.visible }" class="container"><div class="col-24-24">{{ actionNotification.text }}</div></div>
-			<div class="nav" data-ng-class="{ show: topNav.visible }" data-dropdown="topNav.visible" data-items="topNav.items">
+			<div class="nav" data-ng-class="{ show: topNav.visible }" data-dropdown="topNav.visibility" data-items="topNav.items">
 				<ul class="reset-list">
-					<li data-ng-repeat="item in topNav.items">Job Search</li>
+					<li data-ng-repeat="item in topNav.items" ui-sref="{{ item.state }}" data-ng-click="topNav.visibility = false">{{ item.text }}</li>
 				</ul>
 			</div>
 		</div>
 		
-		<div id="wrapper">
+		<div id="wrapper" data-ng-click="bodyClick()">
 			<div data-ui-view="">
 			</div>
 		</div>

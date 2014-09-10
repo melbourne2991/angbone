@@ -2,11 +2,18 @@ var controllers = angular.module('app.controllers', ['app.services']);
 
 controllers.controller('MainController', ['$scope', '$timeout', function($scope, $timeout) {
 	$scope.topNav = {
-		visible: false,
+		visibility: false,
 		items: [
-			{ text: 'Jobs', link: ''},
-			{ text: 'Shortlist', link: ''},
+			{ text: 'Find Jobs', state: 'home.jobs'},
+			{ text: 'Shortlist', state: 'shortlist'},
 		]
+	};
+
+	$scope.bodyClick = function() {
+		if($scope.topNav.visibility === true) {
+			$scope.topNav.visibility = false;
+			console.log('in the winnengs');
+		}
 	};
 
 	$scope.actionNotification = {
@@ -23,7 +30,7 @@ controllers.controller('MainController', ['$scope', '$timeout', function($scope,
 		$timeout(function() {
 			$scope.actionNotification.visible = false;
 		}, 3000);
-	}
+	};
 }]);
 
 controllers.controller('HomeController', ['$scope', '$state', 'Job', 'User', 'UserLocation', function($scope, $state, Job, User, UserLocation) {	
@@ -62,7 +69,7 @@ controllers.controller('HomeController', ['$scope', '$state', 'Job', 'User', 'Us
 
 	$scope.runSearch = function() {
 		$state.go('home.jobs', { keyword: $scope.selectedJobType });
-	}
+	};
 }]);
 
 controllers.controller('ArticlesController', ['$scope', '$state', 'Job', 'User', 'RssFeed', function($scope, $state, Job, User, RssFeed) {	
@@ -138,4 +145,8 @@ controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User
 		console.log(job);
 		// Shortlist.push(job);
 	};
+}]);
+
+controller.controller('ShortlistController', ['$scope', function($scope) {
+
 }]);

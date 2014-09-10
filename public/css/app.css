@@ -1572,9 +1572,6 @@ label {
     background-color: rgba(0, 0, 0, 0.9);
     background: rgba(0, 0, 0, 0.9);
     color: #fff;
-    max-height: 000px;
-    overflow: hidden;
-    transition: max-height 1s;
     width: 100%; }
     #header-dropdown .nav li {
       padding: 20px 40px;
@@ -1587,8 +1584,6 @@ label {
         border-bottom: 0; }
       #header-dropdown .nav li:hover {
         background: #2c2c2c; }
-  #header-dropdown .nav.show {
-    max-height: 1000px; }
 
 #notifications-bar {
   background-color: rgba(0, 0, 0, 0.8);

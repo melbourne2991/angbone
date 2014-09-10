@@ -99,9 +99,9 @@ $header_collapsed_height: 50px;
 		background-color: rgba(0, 0, 0, 0.9);
 		background: rgba(0, 0, 0, 0.9);
 		color: #fff;
-		max-height: 000px;
-		overflow: hidden;
-		transition: max-height 1s;
+		// max-height: 000px;
+		// overflow: hidden;
+		// transition: max-height 1s;
 		width: 100%;
 
 		li {
@@ -125,9 +125,9 @@ $header_collapsed_height: 50px;
 		}
 	}
 
-	.nav.show {
-		max-height: 1000px;
-	}
+	// .nav.show {
+	// 	// max-height: 1000px;
+	// }
 }
 
 #notifications-bar {

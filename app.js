@@ -22,6 +22,14 @@ routes(app);
 
 app.use('/job_api', job_api(express));
 
+app.get('/findip', function(req, res) {
+	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+	requestify.get('http://freegeoip.net/json/' + ip).done(function(response) {
+		res.send(response);
+	});
+});
+
 app.get('/shortlist', function(req, res) {
 	if(req.session.shortlist.length) {
 		res.send(req.session.shortlist);
@@ -43,15 +51,6 @@ app.post('/shortlist', function(req, res) {
 		res.send({error: 'Sorry there was an error'});
 	}
 });
-
-app.get('/findip', function(req, res) {
-	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
-	requestify.get('http://freegeoip.net/json/' + ip).done(function(response) {
-		res.send(response);
-	});
-});
-
 
 app.use(express.static(__dirname + '/public'));
 

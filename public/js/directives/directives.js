@@ -129,13 +129,33 @@ app.directive('dropdown', ['$timeout', function($timeout) {
 		},
 		transclude: false,
 		link: function(scope, element, attrs) {
-			$timeout(function() {
-				var lis = element.find('li');
-
-				_.forEach(lis, function(li, i) {
-					console.log(li);
-				});
+			element.css({
+				visibility: 'hidden'
 			});
+			
+			$timeout(function() {
+				var total_height = element.find('ul').height();
+
+				scope.$watch('items', function(n, o) {
+					total_height = element.find('ul').height();
+
+					element.css({
+						overflow: 'hidden',
+						height: 0,
+						transition: 'all .3s'
+					});
+				});
+
+				scope.$watch('dropdown', function(n, o) {
+					element.css({visibility: 'visible'});
+
+					if(n) {
+						element.css({height: total_height});
+					} else {
+						element.css({height: 0});
+					}
+				});
+			}, 50);
 		}
 	}
 }]);
