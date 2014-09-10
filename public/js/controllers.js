@@ -143,7 +143,7 @@ controllers.controller('JobResultsController', ['$scope', '$state', '$sce', 'Job
 
 	$scope.addToShortlist = function(job) {
 		Shortlist.updateShortList(job).then(function(results) {
-			$scope.newActionNotification($sce.trustAsHtml(job.jobtitle + ' - ' + job.company + ' has been added to <a href="/#/shortlisted">your shortlist</a>'));
+			$scope.newActionNotification($sce.trustAsHtml(job.jobtitle + ' - ' + job.company + ' has been added to <a href="#/shortlisted">your shortlist</a>'));
 		});
 	};
 }]);
