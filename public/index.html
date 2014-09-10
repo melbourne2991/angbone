@@ -27,20 +27,14 @@
 					<span></span>
 					<span></span>
 				</div>
-
-<!-- 				<div class="nav">
-					<ul>
-						<li>Home</li>
-						<li>Blog</li>
-						<li>Advertise</li>
-						<li>Contact</li>
-					</ul>
-				</div> -->
 			</div>
 		</div>
 
 		<div class="dropdown" id="header-dropdown">
-			<div id="notifications-bar" data-ng-class="{ show: actionNotification.visible }" class="container"><div class="col-24-24">{{ actionNotification.text }}</div></div>
+			<div id="notifications-bar" data-ng-class="{ show: actionNotification.visible }" class="container">
+				<div class="col-24-24" data-ng-bind-html="actionNotification.text"></div>
+			</div>
+
 			<div class="nav" data-ng-class="{ show: topNav.visible }" data-dropdown="topNav.visibility" data-items="topNav.items">
 				<ul class="reset-list">
 					<li data-ng-repeat="item in topNav.items" ui-sref="{{ item.state }}" data-ng-click="topNav.visibility = false">{{ item.text }}</li>

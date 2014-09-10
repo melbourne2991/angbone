@@ -39,6 +39,8 @@ app.get('/shortlist', function(req, res) {
 });
 
 app.post('/shortlist', function(req, res) {
+	if(!req.session.shortlist) req.session.shortlist = [];
+
 	if(req.body.length) {
 		// Concat arrays
 		req.session.shortlist = req.session.shortlist.concat(req.body);

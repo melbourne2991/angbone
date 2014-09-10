@@ -9,13 +9,14 @@ controllers.controller('MainController', ['$scope', '$timeout', function($scope,
 		]
 	};
 
+	// If body is clicked hide top nav.
 	$scope.bodyClick = function() {
 		if($scope.topNav.visibility === true) {
 			$scope.topNav.visibility = false;
-			console.log('in the winnengs');
 		}
 	};
 
+	// Notifications
 	$scope.actionNotification = {
 		visible: false,
 		text: ''
@@ -103,7 +104,7 @@ controllers.controller('ArticlesController', ['$scope', '$state', 'Job', 'User',
 	RssFeed.jsDaily();
 }]);	
 
-controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User', 'Shortlist', function($scope, $state, Job, User, Shortlist) {	
+controllers.controller('JobResultsController', ['$scope', '$state', '$sce', 'Job', 'User', 'Shortlist', function($scope, $state, $sce, Job, User, Shortlist) {	
 	// Start page at 0
 	var page = 0;
 
@@ -141,12 +142,14 @@ controllers.controller('JobResultsController', ['$scope', '$state', 'Job', 'User
 	};
 
 	$scope.addToShortlist = function(job) {
-		$scope.newActionNotification('Job added to shortlist');
-		console.log(job);
-		// Shortlist.push(job);
+		Shortlist.updateShortList(job).then(function(results) {
+			$scope.newActionNotification($sce.trustAsHtml(job.jobtitle + ' - ' + job.company + ' has been added to <a href="/#/shortlisted">your shortlist</a>'));
+		});
 	};
 }]);
 
-controller.controller('ShortlistController', ['$scope', function($scope) {
-
+controllers.controller('ShortlistController', ['$scope', 'Shortlist', function($scope, Shortlist) {
+	Shortlist.getShortlist().then(function(results) {
+		$scope.shortlist = results.data;
+	});
 }]);

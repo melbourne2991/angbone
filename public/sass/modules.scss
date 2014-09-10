@@ -134,23 +134,36 @@ $header_collapsed_height: 50px;
 	background-color: rgba(0, 0, 0, 0.8);
 	background: rgba(0, 0, 0, 0.8);
 	color: #fff;
-	height: 0;
+	height: auto;
+	display: none;
 	width: 100%;
 	z-index: 10;
-	transition: height .5s;
-	overflow: hidden;
-	line-height: $header_height;
-	padding: 0 20px;
+	padding: 20px 20px;
 }
 
 #notifications-bar.show {
-	height: $header_height;
+	display: block;
 }
+
+@media(min-width: 768px) {
+	#notifications-bar {
+		height: 0;
+		display: block;
+		transition: height .5s;
+		overflow: hidden;
+		line-height: $header_height;
+		padding: 0 20px;
+	}
+
+	#notifications-bar.show {
+		height: $header_height;
+	}
+}
+
+
 
 #logo {
 	img {
-		// transition: width .5s;
-		// width: 300px;
 		width: 200px;
 	}
 	transition: all 0.3s;
